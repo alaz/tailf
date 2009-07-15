@@ -128,33 +128,34 @@
                     <header>${basedir}/header.txt</header>
                     <quiet>false</quiet>
                     <failIfMissing>true</failIfMissing>
-                    <excludes>
-                        <exclude>.git/**</exclude>
-                        <exclude>.manager/**</exclude>
-                        <exclude>*.gitignore</exclude>
-                        <exclude>*.txt</exclude>
-                        <exclude>*.xml</exclude>
-                    </excludes>
-                    <useDefaultExcludes>true</useDefaultExcludes>
                     <mapping>
                         <scala>JAVADOC_STYLE</scala>
                     </mapping>
                     <useDefaultMapping>true</useDefaultMapping>
+                    <excludes>
+                        <exclude>.git/**</exclude>
+                        <exclude>.manager/**</exclude>
+                        <exclude>*.gitignore</exclude>
+                        <exclude>src/test/resources/**</exclude>
+                        <exclude>*.xml</exclude>
+                        <exclude>*.md</exclude>
+                    </excludes>
+                    <useDefaultExcludes>true</useDefaultExcludes>
                     <encoding>UTF-8</encoding>
                     <properties>
                         <year>${project.inceptionYear}</year>
                         <email>azarov@osinka.ru</email>
                     </properties>
                 </configuration>
-                    <!-- <executions>
-                        <execution>
-                            <id>format-headers</id>
-                            <phase>process-sources</phase>
-                            <goals>
-                                <goal>format</goal>
-                            </goals>
-                        </execution>
-                    </executions> -->
+                <executions>
+                    <execution>
+                        <id>format-headers</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
