@@ -50,14 +50,13 @@ object Tail {
      */
     def follow(file: File, openTries: Int, openSleep: () => Unit, rereadSleep: () => Unit): InputStream = {
         import java.io.SequenceInputStream
-        import org.scala_tools.javautils.Implicits._
 
-        val it = new Iterator[InputStream] {
-            def next = new FollowingInputStream(file, rereadSleep)
-            def hasNext = testExists(file, openTries, openSleep)
+        val e = new java.util.Enumeration[InputStream]() {
+            def nextElement = new FollowingInputStream(file, rereadSleep)
+            def hasMoreElements = testExists(file, openTries, openSleep)
         }
 
-        new SequenceInputStream(it.asJavaEnumeration)
+        new SequenceInputStream(e)
     }
 
     /**

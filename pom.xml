@@ -4,7 +4,7 @@
     <groupId>com.osinka</groupId>
     <artifactId>tailf</artifactId>
     <version>0.0.9-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
  
     <name>Follow Tail</name>
     <description>Follow tail reads endless log files, taking rotations into account.</description>
@@ -30,20 +30,16 @@
     </licenses>
 
     <properties>
-        <scala.version>2.7.5</scala.version>
+        <scala.version>2.7.4</scala.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.scala-lang</groupId>
+            <groupId>org.scala-lang-osgi</groupId>
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.scala-tools</groupId>
-            <artifactId>javautils</artifactId>
-            <version>2.7.4-0.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.scala-tools.testing</groupId>
@@ -99,7 +95,7 @@
                 <artifactId>maven-bundle-plugin</artifactId>
                 <version>2.0.0</version>
                 <extensions>true</extensions>
-                <executions>
+                <!-- <executions>
                     <execution>
                         <id>bundle-manifest</id>
                         <phase>process-classes</phase>
@@ -107,13 +103,14 @@
                             <goal>manifest</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions> -->
                 <configuration>
                     <instructions>
                         <_versionpolicy>[$(@),$(version;=+;$(@)))</_versionpolicy>
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
                         <Export-Package>com.osinka.tailf</Export-Package>
                         <Import-Package>
+              scala,
               com.osinka.tailf,
               *
                         </Import-Package>
