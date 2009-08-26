@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.osinka</groupId>
     <artifactId>tailf</artifactId>
-    <version>0.0.9-SNAPSHOT</version>
+    <version>0.1.0</version>
     <packaging>bundle</packaging>
  
     <name>Follow Tail</name>
@@ -189,7 +189,7 @@
     </pluginRepositories>
 
     <scm>
-        <connection>scm:git:git://github.com/alaz/logmeter.git</connection>
+        <connection>scm:git:git://github.com/alaz/tailf.git</connection>
     </scm>
 
     <ciManagement>
