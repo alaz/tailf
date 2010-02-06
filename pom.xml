@@ -103,9 +103,9 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.google.code.maven-license-plugin</groupId>
+                <groupId>com.mycila.maven-license-plugin</groupId>
                 <artifactId>maven-license-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>1.5.1</version>
                 <configuration>
                     <header>${basedir}/header.txt</header>
                     <quiet>false</quiet>
@@ -129,15 +129,6 @@
                         <email>azarov@osinka.ru</email>
                     </properties>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>format-headers</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
