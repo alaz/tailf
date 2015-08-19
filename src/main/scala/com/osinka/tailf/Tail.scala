@@ -17,6 +17,8 @@ package com.osinka.tailf
 
 import java.io.{File, InputStream}
 
+import scala.annotation.tailrec
+
 object Tail {
 
     /**
@@ -68,6 +70,7 @@ object Tail {
      * @return true on success
      */
     def testExists(file: File, tries: Int, sleep: () => Unit): Boolean = {
+        @tailrec
         def tryExists(n: Int): Boolean =
             if (file.exists) true
             else if (n > tries) false
@@ -105,7 +108,8 @@ class FollowingInputStream(val file: File, val waitNewInput: () => Unit) extends
                               finally { false }
     protected def closed_? = !underlying.getChannel.isOpen
 
-    protected def handle(read: => Int): Int = read match {
+    @tailrec
+    final protected def handle(read: => Int): Int = read match {
         case -1 if rotated_? || closed_? => -1
         case -1 =>
             waitNewInput()
